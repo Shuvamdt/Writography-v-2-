@@ -76,12 +76,8 @@ app.post("/post", async (req, res) => {
   };
   console.log(post);
   const id = userId;
-  if (content.length > 100) {
+  if (content.length > 200) {
     return res.json({ mes: "Content exceeds the 100-word limit." });
-  } else if (content.length <= 0) {
-    return res.json({ mes: "Content cannot be empty." });
-  } else if (title.length <= 0) {
-    return res.json({ mes: "You must enter your name." });
   } else {
     await db.query(
       "INSERT INTO blogs (title, blog ,date, user_id) VALUES($1, $2, $3, $4)",
@@ -91,22 +87,23 @@ app.post("/post", async (req, res) => {
   }
 });
 
-app.patch("/user_posts", async (req, res) => {
-  const id = userId;
+app.patch("/user_posts/:id", async (req, res) => {
+  const id = req.params.id;
   const content = req.body.content;
-  console.log(content);
+  console.log(id, content);
   const edit_id = await db.query(
-    "UPDATE blogs SET blog = ($1) WHERE user_id = $2 RETURNING id",
+    "UPDATE blogs SET blog = ($1) WHERE id = $2 RETURNING id",
     [content, id]
   );
   console.log(edit_id.rows);
   res.json({ id: edit_id.rows });
 });
 
-app.delete("/user_posts", async (req, res) => {
-  const id = userId;
+app.delete("/user_posts/:id", async (req, res) => {
+  const id = req.params.id;
+  console.log(id);
   const deleteId = await db.query(
-    "DELETE FROM blogs WHERE user_id= $1 RETURNING id",
+    "DELETE FROM blogs WHERE id= $1 RETURNING id",
     [id]
   );
   res.json({ id: deleteId.rows });
@@ -139,7 +136,8 @@ app.post("/register", async (req, res) => {
               console.log(err);
             } else {
               console.log("success");
-              res.sendStatus(200).json({ name: user.name });
+              userId = user.id;
+              res.json({ name: user.name });
             }
           });
         }

@@ -7,9 +7,7 @@ import PropTypes from "prop-types";
 
 const API_URL = "http://localhost:4000";
 
-const Dashboard = (props) => {
-  const { signedIn, userName, setName, setLog } = props;
-
+const Dashboard = ({ signedIn, userName, setName, setLog }) => {
   const [posts, setPosts] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
@@ -20,20 +18,21 @@ const Dashboard = (props) => {
     }
   }, [signedIn]);
 
-  React.useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/user_posts`);
-        setPosts(response.data);
-      } catch (err) {
-        console.error("Error fetching posts:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
+  const fetchPosts = React.useCallback(async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get(`${API_URL}/user_posts`);
+      setPosts(response.data);
+    } catch (err) {
+      console.error("Error fetching posts:", err);
+    } finally {
+      setLoading(false);
+    }
   }, []);
+
+  React.useEffect(() => {
+    fetchPosts();
+  }, [fetchPosts]);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -53,9 +52,11 @@ const Dashboard = (props) => {
               posts.map((post, index) => (
                 <Post
                   key={index}
+                  post_id={post.id}
                   title={post.title}
                   content={post.blog}
                   user={true}
+                  refreshPosts={fetchPosts}
                 />
               ))
             ) : (

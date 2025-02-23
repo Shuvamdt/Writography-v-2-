@@ -11,21 +11,21 @@ const Blogs = (props) => {
   const [posts, setPosts] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
-  React.useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/all`);
-        setPosts(response.data);
-        console.log(response.data);
-      } catch (err) {
-        console.error("Error fetching posts:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchPosts = async () => {
+    try {
+      const response = await axios.get(`${API_URL}/all`);
+      setPosts(response.data);
+      console.log(response.data);
+    } catch (err) {
+      console.error("Error fetching posts:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  React.useEffect(() => {
     fetchPosts();
-  });
+  }, []);
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar
