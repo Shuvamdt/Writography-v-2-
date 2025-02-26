@@ -45,6 +45,7 @@ const Blogs = (props) => {
                   key={index}
                   title={post.title}
                   content={post.blog}
+                  date={post.date}
                   user={false}
                 />
               ))

@@ -44,12 +44,18 @@ const Post = (props) => {
 
   return (
     <div className="card shadow-md rounded-3xl p-4">
-      <h2
-        className="font card-heading text-lg font-bold py-3 px-5 mx-1 my-1 rounded-2xl"
+      <div
+        className="flex font card-heading text-lg font-bold py-3 px-5 mx-1 my-1 rounded-2xl relative"
         style={{ color: "#FFDFEF" }}
       >
-        {props.title}
-      </h2>
+        <h2 style={{ fontSize: 20 }}>{props.title}</h2>
+        <h6
+          className="absolute top-0 right-0 mt-8 mx-3"
+          style={{ fontSize: 13, color: "#D69ADE" }}
+        >
+          {props.date}
+        </h6>
+      </div>
       <p className="font text-gray-500 py-3 px-5 mx-1 my-1">
         {isEditing ? formData.content : props.content}
       </p>
@@ -98,6 +104,7 @@ const Post = (props) => {
 Post.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
+  date: PropTypes.string,
   user: PropTypes.bool,
   post_id: PropTypes.number.isRequired,
   refreshPosts: PropTypes.func.isRequired,

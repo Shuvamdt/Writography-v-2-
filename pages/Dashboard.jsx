@@ -54,6 +54,7 @@ const Dashboard = ({ signedIn, userName, setName, setLog }) => {
                   key={index}
                   post_id={post.id}
                   title={post.title}
+                  date={post.date}
                   content={post.blog}
                   user={true}
                   refreshPosts={fetchPosts}
