@@ -4,6 +4,7 @@ import Footer from "../src/components/Footer";
 import Post from "../src/components/Post";
 import axios from "axios";
 import PropTypes from "prop-types";
+import Background from "../src/components/Background";
 
 const API_URL = "http://localhost:4000";
 
@@ -36,6 +37,7 @@ const Dashboard = ({ signedIn, userName, setName, setLog }) => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Background />
       <Navbar
         userName={userName}
         signedIn={signedIn}

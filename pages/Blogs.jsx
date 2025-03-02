@@ -4,6 +4,7 @@ import Footer from "../src/components/Footer";
 import Post from "../src/components/Post";
 import axios from "axios";
 import PropTypes from "prop-types";
+import Background from "../src/components/Background";
 
 const API_URL = "http://localhost:4000";
 
@@ -28,6 +29,7 @@ const Blogs = (props) => {
   }, []);
   return (
     <div className="flex flex-col min-h-screen">
+      <Background />
       <Navbar
         userName={props.userName}
         signedIn={props.signedIn}
@@ -43,6 +45,7 @@ const Blogs = (props) => {
               posts.map((post, index) => (
                 <Post
                   key={index}
+                  post_id={post.id}
                   title={post.title}
                   content={post.blog}
                   date={post.date}

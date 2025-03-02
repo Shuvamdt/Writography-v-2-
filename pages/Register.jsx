@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 // import google from "../src/assets/google.svg";
 import PropTypes from "prop-types";
 import axios from "axios";
+import Background from "../src/components/Background";
 
 const Register = (props) => {
   const [hover, setHover] = React.useState(props.state);
@@ -77,6 +78,7 @@ const Register = (props) => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Background />
       <Navbar
         userName={props.userName}
         signedIn={props.signedIn}

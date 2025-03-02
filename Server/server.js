@@ -8,6 +8,7 @@ import passport from "passport";
 import { Strategy } from "passport-local";
 // import GoogleStrategy from "passport-google-oauth2";
 import dotenv from "dotenv";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -43,6 +44,9 @@ db.connect();
 
 let posts = [];
 let userId = 0;
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 app.get("/all", async (req, res) => {
   try {
@@ -107,6 +111,24 @@ app.delete("/user_posts/:id", async (req, res) => {
     [id]
   );
   res.json({ id: deleteId.rows });
+});
+app.post("/roast/:id", async (req, res) => {
+  const id = req.params.id;
+  const result = await db.query("SELECT blog FROM blogs WHERE id=$1", [id]);
+  const blogContent = result.rows.length > 0 ? result.rows[0].blog : null;
+  if (!blogContent) {
+    return res.status(400).json({ error: "Blog content is required" });
+  }
+  const prompt = `Roast this blog post in a humorous and critical and short way:\n\n${blogContent}`;
+  try {
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const text = response.text();
+    res.json({ roast: text });
+  } catch (error) {
+    console.error("Error roasting blog:", error);
+    res.status(500).json({ error: error.message || "An error occurred" });
+  }
 });
 
 app.post("/register", async (req, res) => {

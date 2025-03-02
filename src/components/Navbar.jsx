@@ -29,7 +29,7 @@ const Navbar = (props) => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 py-3 backdrop-blur-md">
+    <nav className="sticky top-0 z-50 py-3 backdrop-blur-md border-b-1 border-[#AD49E1]">
       <div className="container px-4 mx-auto relative text-sm">
         <div className="flex justify-between items-center">
           <div className="flex items-center flex-shrink-0">

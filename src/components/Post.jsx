@@ -10,6 +10,16 @@ const Post = (props) => {
   });
   const [isEditing, setIsEditing] = React.useState(false);
 
+  const roastBlog = async () => {
+    try {
+      const result = await axios.post(`${API_URL}/roast/${props.post_id}`);
+      const roast = result.data.roast;
+      alert(`Roasted post with ID ${props.post_id} to ${roast}`);
+    } catch (err) {
+      console.error("Error roasting post:", err);
+    }
+  };
+
   const deleteBlog = async () => {
     try {
       await axios.delete(`${API_URL}/user_posts/${props.post_id}`);
@@ -43,7 +53,7 @@ const Post = (props) => {
   };
 
   return (
-    <div className="card shadow-md rounded-3xl p-4">
+    <div className="card shadow-md rounded-3xl p-4 anim-block">
       <div
         className="flex font card-heading text-lg font-bold py-3 px-5 mx-1 my-1 rounded-2xl relative"
         style={{ color: "#FFDFEF" }}
@@ -79,6 +89,13 @@ const Post = (props) => {
           </button>
         </div>
       )}
+      <button
+        className="rounded-lg py-1 px-2 m-2 font transition duration-300 hover:opacity-80"
+        style={{ backgroundColor: "#aa60c8", color: "white" }}
+        onClick={roastBlog}
+      >
+        Roast
+      </button>
       {isEditing && (
         <form onSubmit={editBlog} className="mt-2">
           <textarea

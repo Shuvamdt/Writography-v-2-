@@ -2,10 +2,12 @@ import Navbar from "../src/components/Navbar";
 import HeroSection from "../src/components/HeroSection";
 import Footer from "../src/components/Footer";
 import PropTypes from "prop-types";
+import Background from "../src/components/Background";
 
 const Home = (props) => {
   return (
     <div>
+      <Background />
       <Navbar
         userName={props.userName}
         signedIn={props.signedIn}

@@ -3,6 +3,7 @@ import Navbar from "../src/components/Navbar";
 import Footer from "../src/components/Footer";
 import axios from "axios";
 import PropTypes from "prop-types";
+import Background from "../src/components/Background";
 
 const API_URL = "http://localhost:4000";
 
@@ -36,6 +37,7 @@ const Write = (props) => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Background />
       <Navbar
         userName={props.userName}
         signedIn={props.signedIn}
