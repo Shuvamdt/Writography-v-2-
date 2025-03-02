@@ -38,7 +38,8 @@ const Register = (props) => {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:4000/login",
+        // "http://localhost:4000/login",
+        "https://writography-v-2.onrender.com/login",
         loginData,
         { withCredentials: true }
       );
@@ -57,7 +58,8 @@ const Register = (props) => {
   const handleSignup = async () => {
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/register",
+        // "http://localhost:4000/register",
+        "https://writography-v-2.onrender.com/register",
         registerData,
         { withCredentials: true }
       );
