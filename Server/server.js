@@ -28,11 +28,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:4000",
-      "https://writography-v-2.vercel.app",
-    ],
+    origin: ["http://localhost:5173", "http://localhost:4000"],
     credentials: true,
   })
 );
