@@ -6,7 +6,7 @@ import Background from "../src/components/Background";
 
 const Home = (props) => {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Background />
       <Navbar
         userName={props.userName}
@@ -14,7 +14,7 @@ const Home = (props) => {
         setName={props.setName}
         setLog={props.setLog}
       />
-      <div className="max-w-7xl mx-auto pt-20 px-6">
+      <div className="flex-grow max-w-7xl mx-auto pt-20 px-6">
         <HeroSection />
       </div>
       <Footer />
