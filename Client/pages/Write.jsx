@@ -1,9 +1,6 @@
 import React from "react";
-import Navbar from "../src/components/Navbar";
-import Footer from "../src/components/Footer";
 import axios from "axios";
 import PropTypes from "prop-types";
-import Background from "../src/components/Background";
 
 const API_URL = "http://localhost:4000";
 // const API_URL = "https://writography-v-2.onrender.com";
@@ -38,13 +35,6 @@ const Write = (props) => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Background />
-      <Navbar
-        userName={props.userName}
-        signedIn={props.signedIn}
-        setName={props.setName}
-        setLog={props.setLog}
-      />
       <div className="flex flex-col flex-grow justify-center items-center p-4">
         <div className="container-write flex flex-col w-full max-w-2xl mt-10 p-6 backdrop-blur border border-purple-800 rounded-lg">
           <h2 className="text-2xl font-bold text-center mb-4 text-purple-700 font">
@@ -87,7 +77,6 @@ const Write = (props) => {
           </form>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

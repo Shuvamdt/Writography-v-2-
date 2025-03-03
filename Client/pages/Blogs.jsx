@@ -1,15 +1,10 @@
 import React from "react";
-import Navbar from "../src/components/Navbar";
-import Footer from "../src/components/Footer";
 import Post from "../src/components/Post";
 import axios from "axios";
-import PropTypes from "prop-types";
-import Background from "../src/components/Background";
-
 const API_URL = "http://localhost:4000";
 // const API_URL = "https://writography-v-2.onrender.com";
 
-const Blogs = (props) => {
+const Blogs = () => {
   const [posts, setPosts] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
@@ -30,16 +25,13 @@ const Blogs = (props) => {
   }, []);
   return (
     <div className="flex flex-col min-h-screen">
-      <Background />
-      <Navbar
-        userName={props.userName}
-        signedIn={props.signedIn}
-        setName={props.setName}
-        setLog={props.setLog}
-      />
-      <div className="flex-grow px-10 py-10">
+      <div className="flex justify-center items-center flex-grow px-10 py-10">
         {loading ? (
-          <p className="text-center">Loading posts...</p>
+          <img
+            src="../src/assets/loading.gif"
+            alt="Loading..."
+            className="w-16 h-16"
+          />
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {posts.length > 0 ? (
@@ -59,16 +51,8 @@ const Blogs = (props) => {
           </div>
         )}
       </div>
-      <Footer />
     </div>
   );
-};
-
-Blogs.propTypes = {
-  userName: PropTypes.string,
-  signedIn: PropTypes.bool,
-  setName: PropTypes.func,
-  setLog: PropTypes.func,
 };
 
 export default Blogs;

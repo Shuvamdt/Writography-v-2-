@@ -14,7 +14,7 @@ const Post = (props) => {
     try {
       const result = await axios.post(`${API_URL}/roast/${props.post_id}`);
       const roast = result.data.roast;
-      alert(`Roasted post with ID ${props.post_id} to ${roast}`);
+      alert(`${roast},...BOOM! Roasted! ;)`);
     } catch (err) {
       console.error("Error roasting post:", err);
     }
@@ -55,23 +55,25 @@ const Post = (props) => {
   return (
     <div className="card shadow-md rounded-3xl p-4 anim-block">
       <div
-        className="flex font card-heading text-lg font-bold py-3 px-5 mx-1 my-1 rounded-2xl relative"
+        className="flex font card-heading text-lg font-bold py-3 px-5 mx-1 my-auto rounded-2xl relative"
         style={{ color: "#FFDFEF" }}
       >
-        <h2 style={{ fontSize: 20 }}>{props.title}</h2>
+        <h2 className="my-4" style={{ fontSize: 20 }}>
+          {props.title}
+        </h2>
         <h6
-          className="absolute top-0 right-0 mt-8 mx-3"
-          style={{ fontSize: 13, color: "#D69ADE" }}
+          className="absolute bottom-0 right-0 mx-3"
+          style={{ fontSize: 10, color: "#D69ADE" }}
         >
           {props.date}
         </h6>
       </div>
-      <p className="font text-gray-500 py-3 px-5 mx-1 my-1">
+      <p className="font text-gray-500 py-3 px-5 mx-1 my-4">
         {isEditing ? formData.content : props.content}
       </p>
 
-      {props.user && (
-        <div className="flex p-2 m-2">
+      {props.user ? (
+        <div className="flex p-2 m-2 relative bottom-0">
           <button
             className="rounded-lg py-1 px-2 m-2 font transition duration-300 hover:opacity-80"
             style={{ backgroundColor: "#aa60c8", color: "white" }}
@@ -79,7 +81,6 @@ const Post = (props) => {
           >
             {isEditing ? "Cancel" : "Edit"}
           </button>
-
           <button
             className="rounded-lg py-1 px-2 m-2 font transition duration-300 hover:opacity-80"
             style={{ backgroundColor: "#aa60c8", color: "white" }}
@@ -88,14 +89,17 @@ const Post = (props) => {
             Delete
           </button>
         </div>
+      ) : (
+        <div className="flex p-2 m-2">
+          <button
+            className="rounded-lg py-1 px-2 m-2 font transition duration-300 hover:opacity-80"
+            style={{ backgroundColor: "#aa60c8", color: "white" }}
+            onClick={roastBlog}
+          >
+            Roast
+          </button>
+        </div>
       )}
-      <button
-        className="rounded-lg py-1 px-2 m-2 font transition duration-300 hover:opacity-80"
-        style={{ backgroundColor: "#aa60c8", color: "white" }}
-        onClick={roastBlog}
-      >
-        Roast
-      </button>
       {isEditing && (
         <form onSubmit={editBlog} className="mt-2">
           <textarea

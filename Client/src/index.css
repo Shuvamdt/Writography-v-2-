@@ -30,6 +30,8 @@ body {
   overflow-x: hidden;
   height: 100vh;
   max-width: 100%;
+  background-size: 100% auto;
+  background-clip: content-box;
 }
 html,
 body {
@@ -80,38 +82,23 @@ body {
 .grad-2 {
   height: 70vw;
   width: 70vw;
-  max-height: 800px;
-  max-width: 800px;
+  max-height: 500px;
+  max-width: 500px;
   background-image: radial-gradient(
     closest-side,
     rgba(122, 28, 172, 10),
     rgba(46, 7, 63, 0)
   );
   position: absolute;
-  top: 40vw;
-  right: -30vw;
+  top: 20vw;
+  right: -10vw;
   z-index: -1;
+  overflow: hidden;
 }
 
 .grad-3 {
   height: 60vw;
   width: 60vw;
-  max-height: 700px;
-  max-width: 700px;
-  background-image: radial-gradient(
-    closest-side,
-    rgba(122, 28, 172, 10),
-    rgba(46, 7, 63, 0)
-  );
-  position: absolute;
-  top: 60vw;
-  left: -20vw;
-  z-index: -1;
-}
-
-.grad-4 {
-  height: 50vw;
-  width: 50vw;
   max-height: 600px;
   max-width: 600px;
   background-image: radial-gradient(
@@ -120,9 +107,10 @@ body {
     rgba(46, 7, 63, 0)
   );
   position: absolute;
-  top: 120vw;
-  left: 15vw;
+  top: 30vw;
+  left: -20vw;
   z-index: -1;
+  overflow: hidden;
 }
 
 @media (max-width: 1024px) {
@@ -137,10 +125,6 @@ body {
   .grad-3 {
     top: 55vw;
     left: -15vw;
-  }
-  .grad-4 {
-    top: 110vw;
-    left: 10vw;
   }
 }
 @media (max-width: 768px) {
@@ -162,18 +146,11 @@ body {
     top: 50vw;
     left: -5vw;
   }
-  .grad-4 {
-    height: 40vw;
-    width: 40vw;
-    top: 100vw;
-    left: 5vw;
-  }
 }
 @media (max-width: 480px) {
   .grad-1,
   .grad-2,
-  .grad-3,
-  .grad-4 {
+  .grad-3 {
     height: 50vw;
     width: 50vw;
   }
@@ -188,10 +165,6 @@ body {
   .grad-3 {
     top: 45vw;
     left: -2vw;
-  }
-  .grad-4 {
-    top: 90vw;
-    left: 5vw;
   }
 }
 .typo-head {

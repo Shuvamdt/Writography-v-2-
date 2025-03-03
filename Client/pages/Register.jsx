@@ -1,11 +1,8 @@
 import React from "react";
-import Navbar from "../src/components/Navbar";
-import Footer from "../src/components/Footer";
 import { motion } from "framer-motion";
 // import google from "../src/assets/google.svg";
 import PropTypes from "prop-types";
 import axios from "axios";
-import Background from "../src/components/Background";
 
 const Register = (props) => {
   const [hover, setHover] = React.useState(props.state);
@@ -76,19 +73,12 @@ const Register = (props) => {
     }
   };
 
-  const loginStyle = { backgroundColor: "#d69ade" };
+  const loginStyle = { backgroundColor: "#aa60c8", opacity: 0.2 };
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Background />
-      <Navbar
-        userName={props.userName}
-        signedIn={props.signedIn}
-        setName={props.setName}
-        setLog={props.setLog}
-      />
-      <div className="flex flex-col flex-row flex-grow justify-center items-center">
-        <div className="relative w-250 h-180 flex backdrop-blur border-2 border-purple-800 rounded-lg m-10 p-4">
+      <div className="flex flex-col flex-grow justify-center items-center">
+        <div className="relative w-250 h-180 flex backdrop-blur border-1 border-purple-800 rounded-lg m-10 p-4">
           <motion.div
             className="w-109 h-164 m-4 p-4 absolute rounded-lg z-1"
             style={loginStyle}
@@ -98,7 +88,7 @@ const Register = (props) => {
           <div
             className="w-109 h-164 flex flex-col rounded-lg m-4 p-4 justify-center items-center login z-10 font"
             onClick={() => handleChange("login")}
-            style={{ color: hover ? "#AA60C8" : null }}
+            style={{ color: hover ? "#d69ade" : null }}
           >
             <h3 style={{ fontSize: 30 }} className="p-5">
               Welcome Back!
@@ -154,12 +144,12 @@ const Register = (props) => {
               <p>Sign in With Your Google Account</p>
             </a> */}
           </div>
-          <div className="h-164 rounded-full m-4 border-2 border-purple-800 z-10"></div>
+          <div className="h-164 m-4 rounded-full border-1 border-purple-800 z-10"></div>
           <div
             className="w-109 h-164 flex flex-col rounded-lg m-4 p-4 justify-center items-center login z-10 font"
             onClick={() => handleChange("signup")}
             style={{
-              color: !hover ? "#AA60C8" : null,
+              color: !hover ? "#d69ade" : null,
             }}
           >
             <h3 style={{ fontSize: 30 }} className="p-5">
@@ -228,7 +218,6 @@ const Register = (props) => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
