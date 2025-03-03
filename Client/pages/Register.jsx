@@ -88,18 +88,18 @@ const Register = (props) => {
 
   return (
     <div className="flex flex-col min-h-screen justify-center items-center">
-      <div className="m-10 relative w-full max-w-250 flex flex-col sm:flex-row sm:space-x-4 sm:items-center backdrop-blur border border-purple-800 rounded-lg p-6">
+      <div className="m-10 relative w-full max-w-190 flex flex-col sm:flex-row sm:space-x-4 sm:items-center backdrop-blur border border-purple-800 rounded-lg p-6">
         <motion.div
-          className="w-109 h-164 m-4 p-4 absolute rounded-lg z-1"
+          className="w-86 h-164 m-auto p-1 absolute rounded-lg z-1"
           style={loginStyle}
           animate={{
-            x: isSmallScreen ? 0 : hover ? 0 : 470,
-            y: isSmallScreen ? (hover ? 0 : 700) : 0,
+            x: isSmallScreen ? 0 : hover ? 0 : 370,
+            y: isSmallScreen ? (hover ? 0 : 670) : 0,
           }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
         />
         <div
-          className="w-109 h-164 flex flex-col rounded-lg m-4 p-4 justify-center items-center login z-10 font"
+          className="w-100 h-164 flex flex-col rounded-lg m-1 p-1 justify-center items-center login z-10 font"
           onClick={() => handleChange("login")}
           style={{ color: hover ? "#d69ade" : null }}
         >
@@ -158,7 +158,7 @@ const Register = (props) => {
             </a> */}
         </div>
         <div
-          className="w-109 h-164 flex flex-col rounded-lg m-4 p-4 justify-center items-center login z-10 font"
+          className="w-100 h-164 flex flex-col rounded-lg m-1 p-1 justify-center items-center login z-10 font"
           onClick={() => handleChange("signup")}
           style={{
             color: !hover ? "#d69ade" : null,
