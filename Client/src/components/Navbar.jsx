@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 const Navbar = (props) => {
+  const API_URL = "https://writography-v-2.vercel.app";
   const [mobileMenuOpen, setMobileMenu] = React.useState(false);
   const [avatarMenuOpen, setAvatarMenuOpen] = React.useState(false);
 
@@ -20,7 +21,7 @@ const Navbar = (props) => {
     try {
       await axios.post(
         //"http://localhost:4000/logout",
-        "https://writography-v-2.vercel.app"
+        `${API_URL}/logout`
       );
       localStorage.removeItem("userName");
       props.setName("");
