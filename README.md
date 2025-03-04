@@ -5,6 +5,6 @@
 <p>
   This is the updated version of my previous Writography blog application. It has local user authentication using passport.js, 
   it is connected with the PostgreSQL database and it is a fully functional CRUD blog application.
-  It has inbuilt express API server and frontend part is build with React.js. Currently the client side (Frontend side) is deployed in vercel, Please do check it out-
+  It has inbuilt express API server and frontend part is build with React.js. The full stack is deployed in vercel, Please do check it out-
 </p>
-link-https://writography-frontend.vercel.app/
+link-https://writography-v-2-nmc8.vercel.app/
