@@ -33,7 +33,7 @@ app.use(
     origin: [
       "http://localhost:5173",
       "http://localhost:4000",
-      "https://writography-frontend.vercel.app/",
+      "https://writography-frontend.vercel.app",
     ],
     credentials: true,
   })
