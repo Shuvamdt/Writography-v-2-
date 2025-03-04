@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 
-const API_URL = "http://localhost:4000";
-// const API_URL = "https://writography-v-2.onrender.com";
+//const API_URL = "http://localhost:4000";
+const API_URL = "https://writography-v-2.vercel.app/";
 
 const Write = (props) => {
   const [formData, setFormData] = React.useState({

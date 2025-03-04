@@ -1,8 +1,8 @@
 import React from "react";
 import Post from "../src/components/Post";
 import axios from "axios";
-const API_URL = "http://localhost:4000";
-// const API_URL = "https://writography-v-2.onrender.com";
+//const API_URL = "http://localhost:4000";
+const API_URL = "https://writography-v-2.vercel.app/";
 
 const Blogs = () => {
   const [posts, setPosts] = React.useState([]);

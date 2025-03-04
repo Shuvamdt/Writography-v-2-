@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 
-const API_URL = "http://localhost:4000";
+//const API_URL = "http://localhost:4000";
+const API_URL = "https://writography-v-2.vercel.app/";
 
 const Post = (props) => {
   const [formData, setFormData] = React.useState({

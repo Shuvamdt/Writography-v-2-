@@ -18,7 +18,10 @@ const Navbar = (props) => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:4000/logout");
+      await axios.post(
+        //"http://localhost:4000/logout",
+        "https://writography-v-2.vercel.app/"
+      );
       localStorage.removeItem("userName");
       props.setName("");
       props.setLog(false);
