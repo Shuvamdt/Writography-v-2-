@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import axios from "axios";
 
 const Register = (props) => {
+  const API_URL = "https://writography-v-2.vercel.app";
   const [hover, setHover] = React.useState(props.state);
   const [selectedSection, setSelectedSection] = React.useState(props.page);
   const [isSmallScreen, setIsSmallScreen] = React.useState(
@@ -47,7 +48,7 @@ const Register = (props) => {
     try {
       const response = await axios.post(
         //"http://localhost:4000/login",
-        "https://writography-v-2.vercel.app",
+        `${API_URL}/login`,
         loginData,
         { withCredentials: true }
       );
@@ -67,7 +68,7 @@ const Register = (props) => {
     try {
       const { data } = await axios.post(
         //"http://localhost:4000/register",
-        "https://writography-v-2.vercel.app",
+        `${API_URL}/register`,
         registerData,
         { withCredentials: true }
       );
