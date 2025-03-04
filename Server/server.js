@@ -28,7 +28,16 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors({ origin: "*", credentials: true }));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:4000",
+      "https://writography-frontend.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 
 const db = new Pool({
   connectionString: process.env.DATABASE_URL,

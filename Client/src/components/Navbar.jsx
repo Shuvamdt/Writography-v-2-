@@ -20,7 +20,7 @@ const Navbar = (props) => {
     try {
       await axios.post(
         //"http://localhost:4000/logout",
-        "https://writography-v-2.vercel.app/"
+        "https://writography-v-2.vercel.app"
       );
       localStorage.removeItem("userName");
       props.setName("");
